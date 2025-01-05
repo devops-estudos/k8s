@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  selector:
+    matchLabels:
+      app: users-deployment
+  template:
+    metadata:
+      labels:
+        app: users-deployment
+    spec:
+      containers:
+      - name: users-deployment
+        image: 057560478517.dkr.ecr.us-east-1.amazonaws.com/devops-estudos/adonis-app:main
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 500m
+        env:
+          - name: TZ
+            value: UTC
+          - name: PORT
+            value: "4000"
+          - name: HOST
+            value: "0.0.0.0"
+          - name: LOG_LEVEL
+            value: info
+          - name: APP_KEY
+            value: T1QQqctQ_ze8iQs3ZGCe-tSjtoUwSSzT
+          - name: NODE_ENV
+            value: production
+          - name: DB_HOST
+            value: "127.0.0.1"
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_USER
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: "postgres"
+          - name: DB_DATABASE
+            value: "app"
+        ports:
+        - name: http
+          containerPort: 4000
