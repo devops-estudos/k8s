@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: posts-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: posts-deployment
