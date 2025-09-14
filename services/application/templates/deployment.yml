@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contacts-deployment
+  name: {{ .Values.name }}-deployment-{{ .Values.environment }}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: contacts-deployment
+      app: {{ .Values.name }}-deployment-{{ .Values.environment }}
   template:
     metadata:
       labels:
-        app: contacts-deployment
+        app: {{ .Values.name }}-deployment-{{ .Values.environment }}
     spec:
       containers:
-      - name: contacts-deployment
-        image: 203918840319.dkr.ecr.us-east-1.amazonaws.com/contacts:279a37a
+      - name: {{ .Values.name }}-deployment-{{ .Values.environment }}
+        image: {{ .Values.image }}
         resources:
           requests:
             memory: "128Mi"
