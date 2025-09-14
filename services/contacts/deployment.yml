@@ -17,25 +17,25 @@ spec:
         image: 203918840319.dkr.ecr.us-east-1.amazonaws.com/contacts:279a37a
         env:
           - name: NODE_ENV
-            value: development
+            value: production
           - name: PORT
             value: "4000"
           - name: APP_KEY
-            value: "1234567890"
+            value: QiP8eyyVqSGfeDkRsgUGeKDINRlB5MMC
           - name: DB_HOST
-            value: "localhost"
+            value: "127.0.0.1"
           - name: DB_PORT
-            value: "5432"
+            value: 5432
           - name: DB_USER
-            value: "postgres"
+            value: postgres
           - name: DB_PASSWORD
-            value: "postgres"
+            value: postgres
           - name: DB_DATABASE
-            value: "postgres"
+            value: postgres
           - name: HOST
-            value: "localhost"
+            value: localhost
           - name: LOG_LEVEL
-            value: "info"
+            value: error
         resources:
           limits:
             memory: 128Mi
