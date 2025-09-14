@@ -12,8 +12,7 @@ spec:
   selector:
     app: contacts-deployment
   ports:
-  - name: http
+  - targetPort: http
     port: 80
-    targetPort: http
     protocol: TCP
 
