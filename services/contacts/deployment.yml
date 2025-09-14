@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contacts-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: contacts-deployment
+  template:
+    metadata:
+      labels:
+        app: contacts-deployment
+    spec:
+      containers:
+      - name: contacts-deployment
+        image: ghcr.io/devops-estudos/micro-services:3f06f6e
+        env:
+          - name: NODE_ENV
+            value: development
+          - name: PORT
+            value: "4000"
+          - name: APP_KEY
+            value: "1234567890"
+          - name: DB_HOST
+            value: "localhost"
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_USER
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: "postgres"
+          - name: DB_DATABASE
+            value: "postgres"
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 500m
+        ports:
+        - name: http
+          containerPort: 4000
