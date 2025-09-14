@@ -32,6 +32,10 @@ spec:
             value: "postgres"
           - name: DB_DATABASE
             value: "postgres"
+          - name: HOST
+            value: "localhost"
+          - name: LOG_LEVEL
+            value: "info"
         resources:
           limits:
             memory: 128Mi
