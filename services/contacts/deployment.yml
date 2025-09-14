@@ -33,7 +33,7 @@ spec:
           - name: DB_DATABASE
             value: postgres
           - name: HOST
-            value: localhost
+            value: "0.0.0.0"
           - name: LOG_LEVEL
             value: error
         ports:
