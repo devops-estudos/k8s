@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: contacts-deployment
-        image: ghcr.io/devops-estudos/micro-services:3f06f6e
+        image: 203918840319.dkr.ecr.us-east-1.amazonaws.com/contacts:279a37a
         env:
           - name: NODE_ENV
             value: development
