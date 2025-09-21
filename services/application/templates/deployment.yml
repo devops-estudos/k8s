@@ -50,9 +50,9 @@ spec:
           - name: LOG_LEVEL
             value: error
           - name: DD_AGENT_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
           - name: DD_PROFILING_ENABLED
             value: "true"
           - name: DD_LOGS_INJECTION
