@@ -11,10 +11,16 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}-deployment-{{ .Values.environment }}
+        tags.datadoghq.com/env: {{ .Values.environment }}
+        tags.datadoghq.com/service: {{ .Values.name }}
+        tags.datadoghq.com/version: {{ .Values.version }}
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/js-lib.version: v5.67.0
     spec:
       containers:
       - name: {{ .Values.name }}-deployment-{{ .Values.environment }}
-        image: {{ .Values.image }}
+        image: {{ .Values.image }}:{{ .Values.version }}
         resources:
           requests:
             memory: "128Mi"
@@ -43,6 +49,24 @@ spec:
             value: "0.0.0.0"
           - name: LOG_LEVEL
             value: error
+          - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          - name: DD_PROFILING_ENABLED
+            value: "true"
+          - name: DD_LOGS_INJECTION
+            value: "true"
+          - name: DD_APPSEC_ENABLED
+            value: "true"
+          - name: DD_IAST_ENABLED
+            value: "true"
+          - name: DD_APPSEC_SCA_ENABLED
+            value: "true"
+          - name: DD_GIT_COMMIT_SHA
+            value: {{ .Values.version }}
+          - name: DD_GIT_REPOSITORY_URL
+            value: github.com/devops-estudos/micro-services
         ports:
         - name: http
           containerPort: 4000
