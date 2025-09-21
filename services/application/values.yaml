@@ -1,4 +1,4 @@
 name: application
-version: 7965e05
+version: "7965e05"
 image: 203918840319.dkr.ecr.us-east-1.amazonaws.com/contacts
 environment: development
