@@ -11,12 +11,12 @@ spec:
     metadata:
       labels:
         app: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
-        tags.datadoghq.com/env: "{{ .Values.environment }}"
-        tags.datadoghq.com/service: "{{ .Values.name }}"
-        tags.datadoghq.com/version: "{{ .Values.version | quote }}"
-        admission.datadoghq.com/enabled: "true"
+        "tags.datadoghq.com/env": "{{ .Values.environment }}"
+        "tags.datadoghq.com/service": "{{ .Values.name }}"
+        "tags.datadoghq.com/version": "{{ .Values.version | quote }}"
+        "admission.datadoghq.com/enabled": "true"
       annotations:
-        admission.datadoghq.com/js-lib.version: v5.67.0
+        "admission.datadoghq.com/js-lib.version": v5.67.0
     spec:
       containers:
       - name: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
