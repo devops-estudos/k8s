@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}-deployment-{{ .Values.environment }}
+  name: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.name }}-deployment-{{ .Values.environment }}
+      app: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}-deployment-{{ .Values.environment }}
+        app: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
         tags.datadoghq.com/env: {{ .Values.environment }}
         tags.datadoghq.com/service: {{ .Values.name }}
         tags.datadoghq.com/version: {{ .Values.version }}
@@ -19,8 +19,8 @@ spec:
         admission.datadoghq.com/js-lib.version: v5.67.0
     spec:
       containers:
-      - name: {{ .Values.name }}-deployment-{{ .Values.environment }}
-        image: {{ .Values.image }}:{{ .Values.version }}
+      - name: "{{ .Values.name }}-deployment-{{ .Values.environment }}"
+        image: "{{ .Values.image }}:{{ .Values.version }}"
         resources:
           requests:
             memory: "128Mi"
@@ -64,9 +64,9 @@ spec:
           - name: DD_APPSEC_SCA_ENABLED
             value: "true"
           - name: DD_GIT_COMMIT_SHA
-            value: {{ .Values.version }}
+            value: "{{ .Values.version }}"  
           - name: DD_GIT_REPOSITORY_URL
-            value: github.com/devops-estudos/micro-services
+            value: "github.com/devops-estudos/micro-services"
         ports:
         - name: http
           containerPort: 4000
